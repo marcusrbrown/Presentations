@@ -9,6 +9,7 @@ import {
 import renderSlideSet from './renderSlideSet';
 
 const introSlides = {
+  'title': '',
   'bio': `
     <ul>
       <li>Who am I?</li>
@@ -38,7 +39,7 @@ const renderSlide = (slide, notes) => {
 
     case 'bio':
       return (
-        <Slide key={slide} notes={notes}>
+        <Slide key={slide} notes={notes} align="center flex-top">
           <Heading textColor="tertiary">Introduction</Heading>
           <Heading size={6}>Bio</Heading>
           <List>
@@ -52,7 +53,7 @@ const renderSlide = (slide, notes) => {
 
     case 'purpose':
       return (
-        <Slide key={slide} notes={notes}>
+        <Slide key={slide} notes={notes} align="center flex-top">
           <Heading textColor="tertiary">Introduction</Heading>
           <Heading size={6}>Purpose</Heading>
           <List>
@@ -66,7 +67,7 @@ const renderSlide = (slide, notes) => {
 
     case 'methods':
       return (
-        <Slide key={slide} notes={notes}>
+        <Slide key={slide} notes={notes} align="center flex-top">
           <Heading textColor="tertiary">Introduction</Heading>
           <Heading size={6}>Methods</Heading>
           <List>
