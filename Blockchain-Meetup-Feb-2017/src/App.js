@@ -12,8 +12,8 @@ import {
   Text
 } from '@igetgames/spectacle';
 import createTheme from '@igetgames/spectacle/lib/themes/default';
-import Introduction from './Introduction';
-import Overview from './Overview';
+import introduction from './Introduction';
+import overview from './Overview';
 import '@igetgames/spectacle/lib/themes/default/index.css';
 import logo from './logo.svg';
 import './App.css';
@@ -34,15 +34,15 @@ class App extends Component {
       <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
         <Slide transition={["zoom"]} bgColor="primary">
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            Spectacle Boilerplate
+            Hands On Ethereum Smart Contract Development
           </Heading>
           <Image src={logo} className="App-logo" height="160px" />
           <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
             open the src/App.js file to get started
           </Text>
         </Slide>
-        <Introduction />
-        <Overview />
+        {introduction()}
+        {overview()}
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>Typography</Heading>
           <Heading size={1} textColor="secondary">Heading 1</Heading>

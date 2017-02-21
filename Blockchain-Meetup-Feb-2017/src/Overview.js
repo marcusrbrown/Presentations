@@ -1,16 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  Slide,
-  SlideSet
+  Heading,
+  Slide
 } from '@igetgames/spectacle';
+import renderSlideSet from './renderSlideSet';
 
-export default class Overview extends Component {
-  render() {
-    return (
-      <SlideSet>
-        <Slide>
+const overviewSlides = {
+  'title': ''
+};
+
+const renderSlide = (slide, notes) => {
+  switch (slide) {
+    case 'title':
+      return (
+        <Slide key={slide} notes={notes}>
+          <Heading>Overview</Heading>
         </Slide>
-      </SlideSet>
-    );
+      );
+
+    default:
+      return null;
   }
 }
+export default renderSlideSet(overviewSlides, renderSlide);
