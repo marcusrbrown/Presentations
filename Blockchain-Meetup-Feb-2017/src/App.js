@@ -12,6 +12,8 @@ import {
   Text
 } from '@igetgames/spectacle';
 import createTheme from '@igetgames/spectacle/lib/themes/default';
+import Introduction from './Introduction';
+import Overview from './Overview';
 import '@igetgames/spectacle/lib/themes/default/index.css';
 import logo from './logo.svg';
 import './App.css';
@@ -39,6 +41,8 @@ class App extends Component {
             open the src/App.js file to get started
           </Text>
         </Slide>
+        <Introduction />
+        <Overview />
         <Slide transition={["fade"]} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>Typography</Heading>
           <Heading size={1} textColor="secondary">Heading 1</Heading>
