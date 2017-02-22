@@ -9,6 +9,7 @@ import {
 import createTheme from '@igetgames/spectacle/lib/themes/default';
 import introduction from './Introduction';
 import overview from './Overview';
+import demo from './Demo';
 import '@igetgames/spectacle/lib/themes/default/index.css';
 import './App.css';
 
@@ -37,6 +38,7 @@ class App extends Component {
         </Slide>
         {introduction()}
         {overview()}
+        {demo()}
       </Deck>
     );
   }
