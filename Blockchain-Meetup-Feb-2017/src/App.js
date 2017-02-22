@@ -3,6 +3,7 @@ import {
   Deck,
   Heading,
   Image,
+  Link,
   Slide,
   Text
 } from '@igetgames/spectacle';
@@ -35,6 +36,7 @@ class App extends Component {
           <Text margin="10px 0 0" textColor="secondary" size={1} fit bold>
             Blockchain Meetup - February 21st, 2017
           </Text>
+          <Link href="https://igg.ms/bm-feb-2017">https://igg.ms/bm-feb-2017</Link>
         </Slide>
         {introduction()}
         {overview()}
