@@ -10,7 +10,6 @@ import createTheme from '@igetgames/spectacle/lib/themes/default';
 import introduction from './Introduction';
 import overview from './Overview';
 import '@igetgames/spectacle/lib/themes/default/index.css';
-import logo from './logo.svg';
 import './App.css';
 
 const theme = createTheme({
@@ -28,11 +27,11 @@ class App extends Component {
     return (
       <Deck transition={["fade"]} transitionDuration={500} theme={theme}>
         <Slide transition={["zoom"]} bgColor="primary">
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
+          <Heading size={3} caps textColor="tertiary">
             Hands On Ethereum Smart Contract Development
           </Heading>
-          <Image src={logo} className="App-logo" height="160px" />
-          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
+          <Image src="https://themerkle.com/wp-content/uploads/2016/03/ethereum-visual-studio-featured.jpg" height="300px" />
+          <Text margin="10px 0 0" textColor="secondary" size={1} fit bold>
             Blockchain Meetup - February 21st, 2017
           </Text>
         </Slide>
