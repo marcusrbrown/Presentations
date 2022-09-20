@@ -1,7 +1,7 @@
 {
-  "name": "Blockchain-Meetup-Feb-2017",
+  "name": "blockchain-meetup-feb-2017",
   "version": "0.1.0",
-  "homepage": "https://igetgames.github.io/Presentations",
+  "homepage": "https://marcusrbrown.github.io/Presentations",
   "private": true,
   "devDependencies": {
     "spectacle-react-scripts": "0.9.0-srs.2"
