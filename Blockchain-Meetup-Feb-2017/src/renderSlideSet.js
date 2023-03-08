@@ -1,5 +1,5 @@
 import React from 'react';
-import { SlideSet } from '@igetgames/spectacle';
+import { SlideSet } from 'spectacle';
 
 export default function renderSlideSet(slideMap, renderer) {
   return () => {
