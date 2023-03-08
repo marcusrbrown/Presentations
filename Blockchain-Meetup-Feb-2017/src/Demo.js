@@ -1,9 +1,6 @@
 import React from 'react';
 import {
-  Appear,
   Heading,
-  List,
-  ListItem,
   Slide
 } from 'spectacle';
 import renderSlideSet from './renderSlideSet';
