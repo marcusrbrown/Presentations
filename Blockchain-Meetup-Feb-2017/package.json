@@ -7,10 +7,10 @@
     "spectacle-react-scripts": "0.9.0-srs.2"
   },
   "dependencies": {
-    "gh-pages": "^0.12.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "spectacle": "^2.0.0"
+    "gh-pages": "0.12.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "spectacle": "2.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
