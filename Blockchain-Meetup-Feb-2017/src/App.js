@@ -6,12 +6,12 @@ import {
   Link,
   Slide,
   Text
-} from '@igetgames/spectacle';
-import createTheme from '@igetgames/spectacle/lib/themes/default';
+} from 'spectacle';
+import createTheme from 'spectacle/lib/themes/default';
 import introduction from './Introduction';
 import overview from './Overview';
 import demo from './Demo';
-import '@igetgames/spectacle/lib/themes/default/index.css';
+import 'spectacle/lib/themes/default/index.css';
 import './App.css';
 
 const theme = createTheme({

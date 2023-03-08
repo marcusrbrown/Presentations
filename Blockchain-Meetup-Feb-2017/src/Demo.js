@@ -5,7 +5,7 @@ import {
   List,
   ListItem,
   Slide
-} from '@igetgames/spectacle';
+} from 'spectacle';
 import renderSlideSet from './renderSlideSet';
 
 const demoSlides = {
