@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 it('renders without crashing', () => {
-  window.matchMedia = jest.genMockFunction().mockImplementation(function () {
+  window.matchMedia = jest.fn().mockImplementation(function () {
     return {
       matches: true
     };
