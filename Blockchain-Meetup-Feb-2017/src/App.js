@@ -11,7 +11,6 @@ import createTheme from 'spectacle/lib/themes/default';
 import introduction from './Introduction';
 import overview from './Overview';
 import demo from './Demo';
-import 'spectacle/lib/themes/default/index.css';
 import './App.css';
 
 const theme = createTheme({
