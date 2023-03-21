@@ -7,21 +7,23 @@ import {
   Slide,
   Text
 } from 'spectacle';
-import createTheme from 'spectacle/lib/themes/default';
 import introduction from './Introduction';
 import overview from './Overview';
 import demo from './Demo';
 import './App.css';
 
-const theme = createTheme({
-  primary: "white",
-  secondary: "#1F2022",
-  tertiary: "#03A9FC",
-  quartenary: "#CECECE"
-}, {
-  primary: "Montserrat",
-  secondary: "Helvetica"
-});
+const theme = {
+  colors: {
+    primary: "white",
+    secondary: "#1F2022",
+    tertiary: "#03A9FC",
+    quartenary: "#CECECE"  
+  },
+  fonts: {
+    primary: "Montserrat",
+    secondary: "Helvetica"
+  },
+};
 
 class App extends Component {
   render() {
