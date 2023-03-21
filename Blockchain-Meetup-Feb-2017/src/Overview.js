@@ -3,9 +3,9 @@ import {
   Appear,
   Heading,
   Link,
-  List,
   ListItem,
-  Slide
+  Slide,
+  UnorderedList,
 } from 'spectacle';
 import renderSlideSet from './renderSlideSet';
 
@@ -57,12 +57,12 @@ const renderSlide = (slide, notes) => {
           <Heading>Overview</Heading>
           <Heading size={6}>Docker</Heading>
           <Link href="https://www.docker.com/">https://www.docker.com/</Link>
-          <List>
+          <UnorderedList>
             <Appear><ListItem>A "containerization platform". What?</ListItem></Appear>
             <Appear><ListItem>Encapsulates one or more programs in a script (Dockerfile).</ListItem></Appear>
             <Appear><ListItem>Supports building images from a Dockerfile that run on any system supported by Docker.</ListItem></Appear>
             <Appear><ListItem>Works great for server apps and command-line utilities (we'll use both).</ListItem></Appear>
-          </List>
+          </UnorderedList>
         </Slide>
       );
 
@@ -72,12 +72,12 @@ const renderSlide = (slide, notes) => {
           <Heading>Overview</Heading>
           <Heading size={6}>Parity</Heading>
           <Link href="https://ethcore.io/parity.html">https://ethcore.io/parity.html</Link>
-          <List>
+          <UnorderedList>
             <Appear><ListItem>All-singing, all-dancing Ethereum blockchain client.</ListItem></Appear>
             <Appear><ListItem>Supports Ethereum and derivatives, including Ethereum Classic, Expanse, and custom Ethereum blockchains.</ListItem></Appear>
             <Appear><ListItem>Has browser application for managing wallet, interacting with Ethereum applications, etc.</ListItem></Appear>
             <Appear><ListItem>We'll use Proof-of-Authority (PoA) as an alternative to Proof-of-Work (PoW).</ListItem></Appear>
-          </List>
+          </UnorderedList>
         </Slide>
       );
 
@@ -87,12 +87,12 @@ const renderSlide = (slide, notes) => {
           <Heading>Overview</Heading>
           <Heading size={6}>Truffle</Heading>
           <Link href="http://truffleframework.com/">http://truffleframework.com/</Link>
-          <List>
+          <UnorderedList>
             <Appear><ListItem>Scaffold a Solidity project.</ListItem></Appear>
             <Appear><ListItem>Easily write JavaScript and Solidity tests.</ListItem></Appear>
             <Appear><ListItem>Use a fast blockchain shim for testing (EthereumJS-TestRPC) or a full client (Parity).</ListItem></Appear>
             <Appear><ListItem>Deploy to a local blockchain instance, Testnet, or production Ethereum with a single configuration.</ListItem></Appear>
-          </List>
+          </UnorderedList>
         </Slide>
       );
 
@@ -102,11 +102,11 @@ const renderSlide = (slide, notes) => {
           <Heading>Overview</Heading>
           <Heading size={6}>Zeppelin</Heading>
           <Link href="https://openzeppelin.org/">https://openzeppelin.org/</Link>
-          <List>
+          <UnorderedList>
             <Appear><ListItem>Framework of Solidity contracts and libraries.</ListItem></Appear>
             <Appear><ListItem>Audited by Ethereum professionals, uses Solidity best practices.</ListItem></Appear>
             <Appear><ListItem>Drop into a Truffle project, use immediately.</ListItem></Appear>
-          </List>
+          </UnorderedList>
         </Slide>
       );
 
@@ -116,10 +116,10 @@ const renderSlide = (slide, notes) => {
           <Heading>Overview</Heading>
           <Heading size={6}>Create React App</Heading>
           <Link href="https://github.com/facebookincubator/create-react-app">https://github.com/facebookincubator/create-react-app</Link>
-          <List>
+          <UnorderedList>
             <Appear><ListItem>Create a full React application with a single command.</ListItem></Appear>
             <Appear><ListItem>Focus on iteration and application functionality, not on boilerplate.</ListItem></Appear>
-          </List>
+          </UnorderedList>
         </Slide>
       );
 
@@ -131,11 +131,11 @@ const renderSlide = (slide, notes) => {
           <Link href="https://github.com/ethereum/web3.js/">https://github.com/ethereum/web3.js/</Link>
           <br />
           <Link href="https://ethereumjs.github.io/">https://ethereumjs.github.io/</Link>
-          <List>
+          <UnorderedList>
             <Appear><ListItem>Web3 is the de facto JavaScript client for Ethereum blockchain access.</ListItem></Appear>
             <Appear><ListItem>EthereumJS is a suite of libraries for wallet management, testing, building transactions, etc.</ListItem></Appear>
             <Appear><ListItem>Both frameworks cover most Ethereum application requirements (used by majority of "dApps").</ListItem></Appear>
-          </List>
+          </UnorderedList>
         </Slide>
       );
 
