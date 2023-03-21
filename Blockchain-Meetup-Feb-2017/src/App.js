@@ -20,8 +20,8 @@ const theme = {
     quartenary: "#CECECE"  
   },
   fonts: {
-    primary: "Montserrat",
-    secondary: "Helvetica"
+    header: "Montserrat",
+    text: "Helvetica"
   },
 };
 
