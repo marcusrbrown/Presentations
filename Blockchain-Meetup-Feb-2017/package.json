@@ -4,6 +4,7 @@
   "homepage": "https://marcusrbrown.github.io/Presentations",
   "private": true,
   "dependencies": {
+    "assert": "npm:assert@2.0.0",
     "gh-pages": "5.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -28,6 +29,11 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!react-syntax-highlighter).+\\.js$"
     ]
   }
 }
