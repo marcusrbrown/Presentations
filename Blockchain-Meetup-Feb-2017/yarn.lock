@@ -6540,6 +6540,11 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==
+
 lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
@@ -8781,14 +8786,15 @@ spdy@^4.0.2:
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
 
-spectacle@10.1.4:
-  version "10.1.4"
-  resolved "https://registry.yarnpkg.com/spectacle/-/spectacle-10.1.4.tgz#01e8c55c7a403c0eca65b31666e361a36217c344"
-  integrity sha512-kjcD3Re1ciUKFeHYDXQ52PuyQzxMrPeJ1v62iOaz3WkjAtivZbpyV+1EJHcqWGElDiGAXadLfGFUeyqpUPsRqA==
+spectacle@10.1.5:
+  version "10.1.5"
+  resolved "https://registry.yarnpkg.com/spectacle/-/spectacle-10.1.5.tgz#7622a8c60c05bbd4541f2d96e50754b62aa758be"
+  integrity sha512-KF0iaCfSq3GSix+WRXz5GDWmk+8XZ5P8hUex9/NePq2jCxo10kjFdRp5iZyB1AnolmhSciBUT+Mt5SbmjmUJjA==
   dependencies:
     broadcast-channel "^4.17.0"
     history "^5.3.0"
     kbar "0.1.0-beta.40"
+    lodash.clonedeep "^4.5.0"
     mdast-builder "^1.1.1"
     mdast-zone "^4.0.0"
     merge-anything "^3.0.3"
