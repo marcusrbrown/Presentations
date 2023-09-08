@@ -4,7 +4,7 @@
   "homepage": "https://marcusrbrown.github.io/Presentations",
   "private": true,
   "dependencies": {
-    "assert": "npm:assert@2.0.0",
+    "assert": "npm:assert@2.1.0",
     "gh-pages": "6.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
