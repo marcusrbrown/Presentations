@@ -1,0 +1,27 @@
+# Extend default settings for all of my personal repositories defined in .github/settings.yml
+_extends: .github:common-settings.yaml
+
+repository:
+  name: Presentations
+  description: A collection of presentations I've given.
+  homepage: https://marcusrbrown.github.io/Presentations/
+
+  topics: >-
+    react,
+    meetup,
+    blockchain,
+    presentations,
+    ethereum-classic
+
+  squash_merge_commit_message: PR_BODY
+
+branches:
+  - name: main
+    protection:
+      required_status_checks:
+        strict: false
+        contexts: ["Build", "Test"]
+      enforce_admins: true
+      required_pull_request_reviews: null
+      restrictions: null
+      required_linear_history: true
