@@ -11,9 +11,8 @@ repository:
     meetup,
     blockchain,
     presentations,
-    ethereum-classic
-
-  squash_merge_commit_message: PR_BODY
+    ethereum-classic,
+    ethereum
 
 branches:
   - name: main
