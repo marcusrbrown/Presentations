@@ -1,6 +1,6 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  extends: ["github>marcusrbrown/renovate-config"],
+  extends: ["github>marcusrbrown/renovate-config:archived-repository"],
   packageRules: [
     {
       matchUpdateTypes: ["major"],
