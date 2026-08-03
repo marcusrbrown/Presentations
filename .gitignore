@@ -1,0 +1,6 @@
+# Opencode
+!.opencode/
+.opencode/*
+!.opencode/commands/
+!.opencode/themes/
+!.opencode/tui.json
