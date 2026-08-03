@@ -68,9 +68,9 @@ image: /images/aa-intelligence-vs-cost.png
 backgroundSize: contain
 ---
 
-# One picture, whole thesis
+# Intelligence vs. cost per task
 
-**Intelligence vs. cost per task** — Artificial Analysis, Aug 2026
+Artificial Analysis Intelligence Index v4.1, Aug 2026
 
 - DeepSeek V4 Flash: index **50** at **~$0.03**/task
 - GPT-5.6 Terra (high): index 50 at ~$0.3 — **10x the cost, same score**
@@ -79,7 +79,7 @@ backgroundSize: contain
 
 <v-click>
 
-~100x cost range buys ~9 index points. *That's* the market inefficiency this talk exploits.
+Across this filter: ~100x in cost, ~9 index points.
 
 </v-click>
 
@@ -411,15 +411,18 @@ outside EU/UK).
 layout: statement
 ---
 
-# Budget buys ceiling.
-# Routing buys leverage.
+# Pick a mix, not a model.
 
 <v-click>
 
-`github.com/marcusrbrown` — slides · dotfiles (presets) · infra (CLIProxyAPI)
+<img src="/images/repo-qr.png" class="w-36 mx-auto mt-6 rounded" alt="QR: talk repo" />
+
+`marcusrbrown/Presentations` — presets · configs · outline with sources
 
 </v-click>
 
 <!--
-QR code slot — generate before the talk. Q&A flows into the club discussion.
+QR → github.com/marcusrbrown/Presentations/tree/main/Cheap-LLMs-Meetup-Aug-2026
+Closing line is in TALK-TRACK.md. Stop talking after it; Q&A flows into the
+club discussion block.
 -->
