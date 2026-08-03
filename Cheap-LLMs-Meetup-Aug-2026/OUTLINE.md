@@ -187,7 +187,7 @@ the Feb 2026 ban wave was for "sharing and reselling."
 - **$10**: OpenCode Go + OMO Slim preset. The sweet spot for this room.
 - **$100–343**: frontier plans for the ceiling, cheap presets for the volume,
   proxy + monitoring only if you enjoy operating infrastructure.
-- One-liner: **budget buys ceiling, routing buys leverage.**
+- Anchor line (the only aphorism in the talk): **pick a mix, not a model.**
 - QR → repo: these slides, my dotfiles (presets), infra (CLIProxyAPI deploy).
 
 ---
