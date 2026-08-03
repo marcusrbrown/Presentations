@@ -1,0 +1,14 @@
+{
+  "name": "cheap-llms-meetup-aug-2026",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md",
+    "export": "slidev export slides.md"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^52.1.0",
+    "@slidev/theme-seriph": "^0.25.0"
+  }
+}
