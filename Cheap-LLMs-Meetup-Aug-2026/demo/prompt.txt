@@ -1,0 +1,31 @@
+Run the first and only foreground parallel batch, with exactly two agents: explorer and fixer. Do not nest another batch, delegate follow-up work, or run nested verification.
+
+Explorer: read-only access. Inspect the existing StartupHandshake.test.ts scenario for LiveServerStatus and report the exact failing behavior. Do not edit anything.
+
+Fixer: read-write access to ONLY StartupHandshake.tsx. Before changing code, run this exact literal command:
+
+```
+bun test src/app/StartupHandshake.test.ts -t LiveServerStatus
+```
+
+Record RED 1/1. Make the smallest fix for the failed-only UI. The component must accept an onRetry callback prop and use a native retry button with type="button", aria-label="Retry server connection", and the exact JSX prop `onClick={onRetry}`. The caller must pass `onRetry={retry}`. The retry control must appear only in the failed state.
+
+The button must have exactly the following inline style object:
+```tsx
+style={{
+  background: "var(--color-error)",
+  color: "var(--color-bg)",
+  border: "1px solid var(--color-bg)",
+  borderRadius: "var(--radius-sm)",
+  padding: "2px var(--space-2)",
+  font: "inherit",
+  fontWeight: 700,
+  cursor: "pointer",
+  outlineOffset: 2,
+}}
+```
+do not add margin (keep the container's existing flex gap). Preserve native focus. Explicitly forbid outline: "none", forbid onFocus, onBlur, or box-shadow focus scripting, and forbid transition styling.
+
+Run the same exact literal command after the fix and record GREEN 2/0. Change ONLY StartupHandshake.tsx; test file untouched. No staging, commit, or push.
+
+When the batch completes, return the terminal results and immediately return the final summary. No nested verification, no extra agents, and no additional edits.
