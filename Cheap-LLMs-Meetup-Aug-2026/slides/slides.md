@@ -71,9 +71,9 @@ Promise: leave with a $0 stack, a $10 stack, or a smarter $200 stack.
 
 Artificial Analysis, Aug 2026 <span class="opacity-60 text-sm">(click chart to zoom)</span>
 
-- The Pareto line runs **DeepSeek V4 Flash** (50 @ ~$0.03) to **Claude Opus 5** (~60 @ ~$2.30)
-- **~80x in cost buys ~10 index points**
-- Kimi K3: ~57 at ~$0.80 · GPT-5.6 Sol (max): 59 at ~$1.20
+- The Pareto line runs **DeepSeek V4 Flash** (50 @ ~$0.03) to **Claude Opus 5** (~60 @ ~$2.30) — **~80x for ~10 points**
+- DeepSeek V4 Flash outscores **GPT-5.6 Terra (high)** (49 @ ~$0.22) at **~1/8 the price**
+- Kimi K3: ~57 at ~$0.85 · GPT-5.6 Sol (max): ~59 at ~$1.30
 - Same model, different effort = 5–10x cost spread → **`variant` is a budget knob too**
 
 </div>
