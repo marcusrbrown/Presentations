@@ -63,58 +63,64 @@ Promise: leave with a $0 stack, a $10 stack, or a smarter $200 stack.
 -->
 
 ---
-layout: image-right
-image: /images/aa-intelligence-vs-cost.png
-backgroundSize: contain
----
 
 # Intelligence vs. cost per task
 
-Artificial Analysis Intelligence Index v4.1, Aug 2026
+<div class="grid grid-cols-[1fr_1.5fr] gap-6 items-center">
+<div>
 
-- DeepSeek V4 Flash: index **50** at **~$0.03**/task
-- GPT-5.6 Terra (high): index 50 at ~$0.3 — **10x the cost, same score**
-- Kimi K3 (max): **57** at ~$0.85 vs GPT-5.6 Sol (max): 59 at ~$2.5
+Artificial Analysis, Aug 2026 <span class="opacity-60 text-sm">(click chart to zoom)</span>
+
+- The Pareto line runs **DeepSeek V4 Flash** (50 @ ~$0.03) to **Claude Opus 5** (~60 @ ~$2.30)
+- **~80x in cost buys ~10 index points**
+- Kimi K3: ~57 at ~$0.80 · GPT-5.6 Sol (max): 59 at ~$1.20
 - Same model, different effort = 5–10x cost spread → **`variant` is a budget knob too**
 
-<v-click>
+</div>
+<div>
 
-Across this filter: ~100x in cost, ~9 index points.
+<ImageZoom src="/images/aa-intelligence-vs-cost.png" alt="Artificial Analysis: Intelligence Index vs cost per task" img-class="rounded shadow" />
 
-</v-click>
+</div>
+</div>
 
 <!--
-Source: artificialanalysis.ai/models — "Intelligence vs. Cost per Intelligence
-Index Task," Intelligence Index v4.1 (blended: agentic + reasoning + knowledge —
-NOT coding-specific; SWE-bench next slide covers that). Log scale — say so.
-Caveats to say out loud: (1) filtered view, 22 of 589 models, no Anthropic
-models in this cut — re-filter with Claude added if you want the ceiling
-visible; (2) cost-per-task = API token prices, so this supports the API story,
-not subscription economics — the receipts slide covers plans. Attribution on
-slide per AA's usage terms.
+Source: artificialanalysis.ai — "Intelligence vs. Cost per Intelligence Index
+Task," Intelligence Index (blended: agentic + reasoning + knowledge — NOT
+coding-specific; SWE-bench next slide covers that). Log scale — say so.
+CLICK THE IMAGE to zoom full-screen for the room; click again to close.
+Anthropic models are on this cut now: Opus 5 (max) tops the Pareto line;
+Fable 5 (with fallback), Opus 4.8, Sonnet 5 sit right of it — the ceiling
+costs real money. Dot readings are my reads off the chart — approximate.
+Caveats: filtered view (25 of 591); cost-per-task = API token prices, not
+subscription economics — the receipts slide covers plans.
 -->
 
 ---
 
 # The gap, honestly
 
-SWE-bench Verified, July 2026:
+SWE-bench Verified, Aug 2026 — two independent leaderboards:
 
-- Cheap tier — DeepSeek V4-Pro-Max, MiniMax M3, Qwen3.7 Max, Kimi K2.6: **~0.80** · GLM-5: ~0.78
-- That's roughly GPT-5.1 / Sonnet 4.6 class — *last year's frontier*
-- Actual frontier (Opus 4.7/4.8, Fable-tier): **0.85–0.95**
+- Frontier: **Opus 5: 96–97** (Anthropic vs Vals.ai — harness-dependent) · Fable 5: 95 · Opus 4.8: ~89
+- Cheap cluster: DeepSeek V4-Pro-Max, MiniMax M3, Qwen3.7 Max, Kimi K2.6 — **~80** (llm-stats)
+- But **Kimi K3 posts 93.4 on Vals.ai** — the harnesses disagree by double digits
 
 <v-click>
 
-**The honesty caveat:** vendor-reported vs independent runs diverge 10–30 points
-(Qwen3-Coder: 38.7% on Scale AI's SWE-bench Pro set vs ~60% self-reported)
+**The honesty caveat:** harness choice moves scores 10+ points; vendor-reported
+runs hotter still; GLM-5.2 publishes no Verified score at all
 
 </v-click>
 
 <!--
-Heuristic to say out loud: trust the cheap model to be last year's frontier,
-not this year's. Re-pull llm-stats + lmarena coding sub-arena Aug 1-3 and
-refresh these numbers.
+Heuristic to say out loud: treat the cheap model as last year's frontier —
+after K3's Vals number, that's a conservative floor, not a ceiling.
+Opus 5 released Jul 24: Anthropic reports 96, Vals.ai independently measures
+97 — present both, never one. Don't quote a GLM-5.2 Verified number (none
+published; its 62.1 is SWE-bench Pro, a different and harder benchmark).
+Qwen3-Coder vendor-vs-Scale-AI (38.7 vs ~60 on SWE-bench Pro) is still the
+cleanest vendor-inflation receipt if asked.
 -->
 
 ---
@@ -184,19 +190,24 @@ trial-only. Fine for OSS, not for client code (privacy rule at the end).
 
 **OpenCode Go**: $5 first month, then $10/mo · $12/5hr, $30/wk, $60/mo caps
 
-17 models: Kimi K3 + K2.7-Code · GLM-5.2 · DeepSeek V4 · MiniMax M3 · Qwen3.7 · Grok 4.5 · even GPT-5.6 Luna now
+18 models: Kimi K3 + K2.7-Code · GLM-5.2 · DeepSeek V4 · MiniMax M3 · Qwen3.7 · Grok 4.5 · even GPT-5.6 Luna now
 
 No Claude. *That's what the caps buy you.*
 
 <v-clicks>
 
 - My `opencode-go` preset runs the **entire 7-agent Pantheon** on this plan alone
-- Alternatives: GLM Coding Plan Lite (~$18, watch 2–3x peak multipliers) · DeepSeek PAYG ($0.14/$0.28 per 1M — side projects land in single digits)
+- The neighbors this week: GLM's plan is mid-move to a credits system (Jul 30) · Kimi Code reopened, tiers from $19 · DeepSeek PAYG ($0.14/$0.28 per 1M — side projects land in single digits)
 
 </v-clicks>
 
 <!--
 This is the slide the Meetup title promised. Demo proves it in a minute.
+Neighbor caveats: GLM credits transition is primary-confirmed (docs.z.ai
+usage-revision notice); legacy Lite was ~$18 w/ 2-3x peak multipliers —
+pricing in flux, don't quote exact GLM numbers tonight. Kimi Code tiers
+($19/$39/$99/$199) are secondary-sourced — say "from about twenty bucks."
+MiniMax plan pricing conflicts across sources — skip unless asked.
 -->
 
 ---
@@ -223,20 +234,22 @@ $30-70 bonus credits during the transition; individual annual holders got nothin
 # Tier Max — what $200 still buys
 
 - The frontier **ceiling** + higher rate walls — not exclusivity
-- Weekly caps are real, even on Max 20x
-- So spend the premium window only where escalation earns it:
+- Opus 5 landed Jul 24: default on Max and Claude Code, same $5/$25 API price
+- Weekly caps are real, even on Max 20x — spend the window where escalation earns it:
 
 ```jsonc
 // oh-my-opencode-slim.jsonc — "mixed-fable" preset
 "orchestrator": { "model": "anthropic/claude-fable-5", "variant": "high" },
 "oracle":       { "model": "openai/gpt-5.6-sol", "variant": "xhigh" },
-"librarian":    { "model": "openai/gpt-5.6-luna", "variant": "low" },
+"librarian":    { "model": "github-copilot/gpt-5.4-mini", "variant": "low" },
 "designer":     { "model": "github-copilot/gemini-3.5-flash" }
 ```
 
 <!--
 Frontier orchestrator, cheap everything else. The $200 plan is a scalpel,
-not a firehose.
+not a firehose. Opus 5: the ceiling moved again 11 days ago at the same
+price — the ceiling tier improves without you touching config; the cheap
+tier improves by you editing one line. Both are true, that's the mix.
 -->
 
 ---
@@ -261,15 +274,18 @@ The Pantheon: 7 roles, stable · models, swappable
 
 | Preset | Orchestrator | Oracle | Workers | Plan |
 |---|---|---|---|---|
-| `openai` | GPT-5.6 Terra | Sonnet 5 | Luna | Pro 5x |
-| `opencode-go` | Kimi K2.6 | DeepSeek V4 Pro | MiniMax M3 | **$10/mo** |
-| `mixed-fable` | Fable 5 | GPT-5.6 Sol | Luna | Max 20x |
+| `openai` | GPT-5.6 Sol | Opus 4.8 | gpt-5.4-mini · Luna | Pro 5x + Max + Copilot |
+| `opencode-go` | MiniMax M3 (thinking) | Qwen3.7 Max | DeepSeek V4 Flash | **$10/mo** |
+| `mixed-fable` | Fable 5 | GPT-5.6 Sol | gpt-5.4-mini · Luna | Max 20x + the rest |
 
 Same task. Same skills. Same MCPs. One line changed.
 
 <!--
-LIVE: run the demo-repo task under openai, /preset to opencode-go, rerun,
-/preset to mixed-fable. Emphasize: budget is a config value.
+LIVE: reset-demo.sh → run the mothership Retry-button task under openai,
+/preset to opencode-go, rerun, /preset to mixed-fable. Emphasize: budget is a
+config value. Aside worth one line: even my "openai" preset grew an Anthropic
+oracle — preset names rot, the mechanism doesn't. Rehearsed timings (Aug 4):
+~77s / ~80s / ~83s per run with the tuned prompt — see DEMO-RUNBOOK.md.
 -->
 
 ---
@@ -280,8 +296,8 @@ LIVE: run the demo-repo task under openai, /preset to opencode-go, rerun,
 // systematic.jsonc — category routing
 "research":        { "model": "github-copilot/gpt-5.4-mini", "variant": "low" },
 "design":          { "model": "github-copilot/gemini-3.5-flash" },
-"review":          { "model": "openai/gpt-5.6-terra", "variant": "medium" },
-// implementer: gpt-5.6-luna, xhigh, temp 0.1
+"review":          { "model": "openai/gpt-5.5", "variant": "low" },
+// implementer: gpt-5.6-luna, xhigh
 ```
 
 Plus `fast-generic` on codex-spark low: lint · test · commit chores
