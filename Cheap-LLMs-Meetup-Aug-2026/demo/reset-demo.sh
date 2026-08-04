@@ -35,6 +35,13 @@ git -C "$repo" show-ref --verify --quiet "refs/heads/$DEMO_BRANCH" ||
 git -C "$repo" checkout "$DEMO_BRANCH"
 git -C "$repo" reset --hard "$BASELINE"
 
+porcelain="$(git -C "$repo" status --porcelain)"
+if [[ -n "$porcelain" ]]; then
+  printf 'reset-demo: reset left repository dirty; untracked or extra files were preserved:\n%s\n' \
+    "$porcelain" >&2
+  exit 1
+fi
+
 printf 'branch=%s sha=%s\n' \
   "$(git -C "$repo" branch --show-current)" \
   "$(git -C "$repo" rev-parse HEAD)"

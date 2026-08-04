@@ -11,6 +11,10 @@ readonly BASELINE="bdd1b1b99fa630bb87472e2f714d6505c8eaf6ed"
 GLOBAL_OPENCODE_CONFIG="${HOME}/.config/opencode/opencode.json"
 GLOBAL_OPENCODE_DIR="${HOME}/.config/opencode"
 RUN_PRESET_OWN_OPENCODE_CONFIG_DIR=""
+RUN_PRESET_EXECUTION_STARTED=0
+RUN_PRESET_RESET_DONE=0
+RUN_PRESET_FINAL_STATUS=0
+reset_after=0
 
 die() {
   printf 'run-preset: %s\n' "$*" >&2
@@ -22,7 +26,54 @@ cleanup_temp() {
     rm -rf "$RUN_PRESET_OWN_OPENCODE_CONFIG_DIR"
   fi
 }
-trap cleanup_temp EXIT
+
+perform_reset_after() {
+  local original_status="$1" reset_status=0 reset_porcelain
+
+  if [[ "$RUN_PRESET_EXECUTION_STARTED" -eq 1 && "$reset_after" -eq 1 &&
+        "$RUN_PRESET_RESET_DONE" -eq 0 ]]; then
+    RUN_PRESET_RESET_DONE=1
+    printf '\nExecuting reset-demo.sh...\n'
+    if "$DEMO_DIR/reset-demo.sh"; then
+      reset_status=0
+    else
+      reset_status=$?
+    fi
+    reset_porcelain="$(git -C "$repo" status --porcelain 2>/dev/null || true)"
+    if [[ -n "$reset_porcelain" ]]; then
+      printf 'run-preset: reset-after failed; repository remains dirty:\n%s\n' \
+        "$reset_porcelain" >&2
+      reset_status=1
+    fi
+    if [[ "$original_status" -ne 0 ]]; then
+      RUN_PRESET_FINAL_STATUS="$original_status"
+    else
+      RUN_PRESET_FINAL_STATUS="$reset_status"
+    fi
+  else
+    RUN_PRESET_FINAL_STATUS="$original_status"
+  fi
+}
+
+on_exit() {
+  local original_status="$?"
+  trap - EXIT INT TERM
+  perform_reset_after "$original_status"
+  cleanup_temp
+  exit "$RUN_PRESET_FINAL_STATUS"
+}
+
+on_sigint() {
+  exit 130
+}
+
+on_sigterm() {
+  exit 143
+}
+
+trap on_exit EXIT
+trap on_sigint INT
+trap on_sigterm TERM
 
 override_luna_variant() {
   local config_file="$1" selected_preset="$2" temp_file
@@ -395,8 +446,6 @@ export OPENCODE_CONFIG_DIR="$RUN_PRESET_OWN_OPENCODE_CONFIG_DIR"
 export OH_MY_OPENCODE_SLIM_PRESET="$preset"
 
 validate_config "$OMO_CONFIG" "$RUN_PRESET_OWN_OPENCODE_CONFIG_DIR/systematic.jsonc"
-log_timestamp="$(date -u '+%Y%m%d-%H%M%S')"
-log_path="/tmp/mothership-${preset}-${log_timestamp}.log"
 
 if [[ $dry_run -eq 1 ]]; then
   printf 'DRY-RUN: %s\n' "$preset"
@@ -412,10 +461,16 @@ if [[ $dry_run -eq 1 ]]; then
   printf '  Branch: %s\n' "$current_branch"
   printf '  HEAD: %s\n' "$current_head"
   printf '  Prompt path: %s/prompt.txt\n' "$DEMO_DIR"
-  printf '  Log path: %s\n' "$log_path"
+  printf '  Log path: not created during dry-run\n'
   exit 0
 fi
 
+log_path="$(mktemp "/tmp/demo-preset-${preset}.XXXXXX")" ||
+  die "could not create durable log"
+chmod 600 "$log_path" || die "could not protect durable log: $log_path"
+printf 'Config dir: %s\n' "$RUN_PRESET_OWN_OPENCODE_CONFIG_DIR"
+printf 'Log path: %s\n' "$log_path"
+RUN_PRESET_EXECUTION_STARTED=1
 printf 'Running preset %s with validated copied config\n' "$preset"
 set +e
 (
@@ -425,11 +480,16 @@ set +e
     --title "Cheap LLMs ($preset)" \
     "$prompt_content" 2>&1 | tee "$log_path"
   pipeline_status=("${PIPESTATUS[@]}")
-  exit "${pipeline_status[0]}"
+  opencode_exit="${pipeline_status[0]}"
+  tee_exit="${pipeline_status[1]}"
+  if [[ "$opencode_exit" -ne 0 ]]; then
+    exit "$opencode_exit"
+  fi
+  exit "$tee_exit"
 )
-opencode_exit="$?"
+pipeline_exit="$?"
 set -e
-[[ "$opencode_exit" == "0" ]] || exit "$opencode_exit"
+[[ "$pipeline_exit" == "0" ]] || exit "$pipeline_exit"
 
 printf '\n\nVerifying: bun test src/app/StartupHandshake.test.ts -t LiveServerStatus\n'
 (
@@ -442,13 +502,14 @@ printf '\n\nVerifying: bun test src/app/StartupHandshake.test.ts -t LiveServerSt
   git diff --check
 )
 
-changed_files="$(cd "$repo" && git diff --name-only || true)"
-[[ "$changed_files" == "src/app/StartupHandshake.tsx" ]] ||
-  die "expected only src/app/StartupHandshake.tsx changed, got: $changed_files"
+post_run_porcelain="$(git -C "$repo" status --porcelain)"
+[[ "$post_run_porcelain" == " M src/app/StartupHandshake.tsx" ]] ||
+  die "expected exact post-run porcelain [ M src/app/StartupHandshake.tsx], got: $post_run_porcelain"
 
 if [[ $reset_after -eq 1 ]]; then
-  printf '\nExecuting reset-demo.sh...\n'
-  "$DEMO_DIR/reset-demo.sh"
+  perform_reset_after 0
+  RUN_PRESET_EXECUTION_STARTED=0
+  [[ "$RUN_PRESET_FINAL_STATUS" -eq 0 ]] || exit "$RUN_PRESET_FINAL_STATUS"
 fi
 
 printf '\n✅ Preset %s completed GREEN\n' "$preset"
