@@ -4,7 +4,7 @@ _extends: .github:common-settings.yaml
 repository:
   name: Presentations
   description: A collection of presentations I've given.
-  homepage: https://marcusrbrown.github.io/Presentations/
+  homepage: https://mrbro.dev/Presentations/
 
   topics: >-
     react,
@@ -12,7 +12,11 @@ repository:
     blockchain,
     presentations,
     ethereum-classic,
-    ethereum
+    ethereum,
+    opencode,
+    cheap-llms,
+    slides,
+    slidev,
 
   archived: true
 
@@ -21,7 +25,7 @@ branches:
     protection:
       required_status_checks:
         strict: false
-        contexts: ["Build", "Test"]
+        contexts: ['Build', 'Test', 'Renovate / Renovate']
       enforce_admins: true
       required_pull_request_reviews: null
       restrictions: null
