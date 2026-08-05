@@ -79,7 +79,7 @@ Artificial Analysis, Aug 2026 <span class="opacity-60 text-sm">(click chart to z
 </div>
 <div>
 
-<ImageZoom src="/images/aa-intelligence-vs-cost.png" alt="Artificial Analysis: Intelligence Index vs cost per task" img-class="rounded shadow" />
+<ImageZoom src="images/aa-intelligence-vs-cost.png" alt="Artificial Analysis: Intelligence Index vs cost per task" img-class="rounded shadow" />
 
 </div>
 </div>

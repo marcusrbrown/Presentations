@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "slidev slides.md --open",
-    "build": "slidev build slides.md",
+    "build": "slidev build slides.md --base /Presentations/Cheap-LLMs-Meetup-Aug-2026/",
     "export": "slidev export slides.md"
   },
   "devDependencies": {
