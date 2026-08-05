@@ -10,6 +10,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build
@@ -31,6 +34,34 @@ jobs:
       - name: Build
         run: yarn build
 
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+
+      - name: Install Slidev dependencies
+        working-directory: Cheap-LLMs-Meetup-Aug-2026/slides
+        run: bun install --frozen-lockfile
+
+      - name: Build Slidev deck
+        working-directory: Cheap-LLMs-Meetup-Aug-2026/slides
+        run: bun run build
+
+      - name: Assemble Pages site
+        working-directory: .
+        run: |
+          mkdir -p _site/Blockchain-Meetup-Feb-2017 _site/Cheap-LLMs-Meetup-Aug-2026
+          cp index.html _site/index.html
+          cp -R Blockchain-Meetup-Feb-2017/build/. _site/Blockchain-Meetup-Feb-2017/
+          cp -R Cheap-LLMs-Meetup-Aug-2026/slides/dist/. _site/Cheap-LLMs-Meetup-Aug-2026/
+
+      - name: Configure Pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
+
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+        with:
+          path: _site
+
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -50,3 +81,22 @@ jobs:
 
       - name: Test
         run: yarn test
+
+  deploy:
+    name: Deploy
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    needs:
+      - build
+      - test
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5

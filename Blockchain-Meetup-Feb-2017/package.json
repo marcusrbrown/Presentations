@@ -1,7 +1,7 @@
 {
   "name": "blockchain-meetup-feb-2017",
   "version": "0.1.0",
-  "homepage": "https://marcusrbrown.github.io/Presentations",
+  "homepage": "https://marcusrbrown.github.io/Presentations/Blockchain-Meetup-Feb-2017/",
   "private": true,
   "dependencies": {
     "assert": "npm:assert@2.1.0",
