@@ -5,7 +5,7 @@
     "": {
       "name": "cheap-llms-meetup-aug-2026",
       "devDependencies": {
-        "@slidev/cli": "^52.1.0",
+        "@slidev/cli": "52.20.1",
         "@slidev/theme-seriph": "0.25.0",
       },
     },
